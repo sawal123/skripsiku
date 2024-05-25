@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Daftar Hadir Tamu</title>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -140,18 +141,16 @@
             </a>
           </li>--}} 
           <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                        <i class="nav-icon fas fa-power-off"></i>
-                                <p>
-                                    Logout
-                                </p>
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                        </form>
-                        </li> 
+                <a class="nav-link" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+                  <i class="nav-icon fas fa-power-off"></i>
+                  <p>Logout</p>
+                </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                  </form>
+          </li> 
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -159,7 +158,6 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-      <!-- SCANNER FRAME -->
   <div class="content-wrapper">
     <div class="content-header">
         <section class="content">
@@ -167,7 +165,12 @@
             <div class="row pt-5">
               <div class="col-md-5 mx-auto">
                 <h1 class="mb-3 text-center">Daftar Tamu Hadir</h1>
-                <table class="table table-striped">
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid mx-auto" style="width: 1000px">
+          <a href="{{ route('download') }}" class="btn btn-outline-success mb-2">Download PDF <i class="mx-1 fas fa-cloud-download-alt"></i></a>
+          <table class="table table-striped border">
                     <thead>
                       <tr>
                         <th scope="col">No</th>
@@ -187,8 +190,6 @@
                       @endforeach
                     </tbody>
                   </table>
-              </div>
-            </div>
           </div>
         </section>
     </div>        

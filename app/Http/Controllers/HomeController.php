@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Tamu;
 use App\Models\User;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class HomeController extends Controller
 {
@@ -46,6 +48,6 @@ class HomeController extends Controller
             'alamat'=>$alamat
         ]);
         
-        return redirect()->back()->with('success', 'Tamu Telah Tersimpan');
+        return redirect()->back()->with('toast_success', 'Selamat Datang, Silahkan Masuk');
     }
 }

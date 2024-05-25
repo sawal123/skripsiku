@@ -39,6 +39,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/daftarhadir', [App\Http\Controllers\DaftarHadirController::class, 'index'])->name('daftarhadir');
 Route::get('/scan', [ScanController::class, 'index'])->name('scan');
+Route::get('/download', [App\Http\Controllers\DaftarHadirController::class, 'download'])->name('download');
 
 
 Route::get('/add-tamu/{nama}/{alamat}', [HomeController::class, 'addTamu']);

@@ -170,19 +170,20 @@
         <!-- Scanner Frame -->
         <div class="content-wrapper">
                 <section class="content">
-                    <div class="container-fluid">
+                    <div class="container-fluid">                        
+                    @include('sweetalert::alert')
                         <div class="row pt-4">
                         <div class="col-md-5 mx-auto">
-                            <h1 class="m-0 text-center">Scan QR Disini</h1>
+                            <h1 class=" text-center">Scan QR Disini</h1>
                             <div id="reader" width="600px"></div>
                             </div>
                         </div>
                         <div class="text-center my-5">
                             <div id="result"></div>
-                            <a href="" id="input" class="btn btn-primary">Submit</a>
+                            <a href="" id="input" class="btn btn-outline-success">Submit</a>
                             {{-- <form action="{{ url('add-tamu') }}" method="post">
                                 <input type="hidden" id="input">
-                                <button type="submit" class="btn btn-primary" >Submit</button>
+                                <button type="submit" class="btn btn-outline-success" >Submit</button>
                             </form> --}}
                         </div>
                             <!-- ./col -->
