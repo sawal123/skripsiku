@@ -34,13 +34,12 @@ class HomeController extends Controller
         return view('home', compact('totaltamu'));
     }
 
-    public function qr(Request $request)
+    public function tema()
     {
-        dd($request->all());
+        return view('tema');
     }
 
     
-
     public function addTamu($nama, $alamat){
         $tamu = Tamu::create([
             'uuid_user'=>Auth::user()->uuid,

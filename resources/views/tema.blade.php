@@ -122,13 +122,13 @@
 
                         <li class="nav-header">MASTER</li>
                         <li class="nav-item">
-                            <a href="{{ route('tema') }}" class="nav-link">
-                                <i class="nav-icon fas fa-qrcode"></i>
-                                <p>
-                                    Pilih Tema Undangan
-                                    <span class="badge badge-info right"></span>
-                                </p>
-                            </a>   
+                            <a href="{{ route('home')}}" class="nav-link">
+                            <i class="nav-icon fas fa-house-user"></i>
+                            <p>
+                                Beranda
+                                <span class="badge badge-info right"></span>
+                            </p>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('scan') }}" class="nav-link">
@@ -182,42 +182,30 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                        <h4 class="pt-2 ">Hi, {{auth()->user()->name}}</h4>
+                        <h4 class="pt-2 ">Hi, {{auth()->user()->name}} Pilih Tema Dulu Yah..</h4>
                         </div><!-- /.row -->
-                    </div><!-- /.container-fluid -->
+                    </div>
+
+                    <!--Isi Konten--> 
+                    <div class="card" style="width: 18rem;">
+                    <img src="{{ asset('Template/images/Tema1.PNG') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Pinky</h5>
+                        <p class="card-text">Setelah Isi Data Pengantin. Akses http://127.0.0.1:8000/undanganku/namatamu/alamat Untuk Lihat Undangan, Kemudian Share Link Tersebut Kepada Tamu</p>
+                        <a href="{{ route('datapengantin') }}" class="btn btn-primary">Pilih Tema Ini</a>
+                    </div>
+                    </div>
+
+                    </div>    
+                <!-- /.container-fluid -->
                 </div>
-                <!-- /.content-header -->
-
-                <!-- Main content -->
-                <section class="content">
-                    <div class="container-fluid">
-                        <!-- Small boxes (Stat box) -->
-                        <div class="row">
-                            <div class="col-lg-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-info">
-                                    <div class="inner">
-                                        <h3>{{ $totaltamu }}</h3>
-                                        <h3></h3>
-
-                                        <p>Total Tamu</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                    <a href="{{ route('daftarhadir') }}" class="small-box-footer">Lihat Detail <i
-                                            class="fas fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                            <!-- ./col -->
-
-
                             <!-- Control Sidebar -->
                             <aside class="control-sidebar control-sidebar-dark">
                                 <!-- Control sidebar content goes here -->
                             </aside>
-                            <!-- /.control-sidebar -->
+                          <!-- /.control-sidebar -->
                         </div>
+                        
                         <!-- ./wrapper -->
 
                         <!-- jQuery -->

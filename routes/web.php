@@ -6,6 +6,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DaftarHadirController;
 use App\Http\Controllers\ScanController;
 use App\Http\Controllers\SendUndanganController;
+use App\Http\Controllers\DataPengantinController;
+use App\Http\Controllers\InfoController;
+use App\Http\Controllers\StoryController;
+use App\Http\Controllers\RekeningController;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
@@ -30,7 +34,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 Route::get('/', function () {
     return view('master');
 });
-Route::get('/undanganku/{nama}/{alamat}', [SendUndanganController::class, 'undangan'])->name('undanganku');
+Route::get('/undanganku/{nama}/{alamat}', [SendUndanganController::class, 'undangan']);
 
 
 Auth::routes();
@@ -40,6 +44,13 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/daftarhadir', [App\Http\Controllers\DaftarHadirController::class, 'index'])->name('daftarhadir');
 Route::get('/scan', [ScanController::class, 'index'])->name('scan');
 Route::get('/download', [App\Http\Controllers\DaftarHadirController::class, 'download'])->name('download');
+Route::get('/datapengantin', [DataPengantinController::class, 'index'])->name('datapengantin');
+Route::get('/tema', [HomeController::class, 'tema'])->name('tema');
+Route::post('/store', [DataPengantinController::class, 'store'])->name('store');
+Route::post('/store_info', [InfoController::class, 'store_info'])->name('store_info');
+Route::post('/store_rek', [RekeningController::class, 'store_rek'])->name('store_rek');
+Route::post('/store_story', [StoryController::class, 'store_story'])->name('store_story');
+
 
 
 Route::get('/add-tamu/{nama}/{alamat}', [HomeController::class, 'addTamu']);

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Yanuar & Tria</title>
+    <title>{{ $data->nama_pria}} & {{ $data->nama_wanita}} </title>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
@@ -31,8 +31,7 @@
             <br>
             <p>Tunjukkan Qr Untuk Check In</p>
                 <p>{{ $qrcode}}</p>
-            
-            <h1>Yanuar Ary Syahputra & Tria Mailan Karemoi</h1>
+            <h1>{{ $data->nama_pria}} & {{ $data->nama_wanita}}</h1>
             <p>Akan melangsungkan resepsi pernikahan dalam:</p>
             <div class="simply-countdown"></div>
             <a href="#home" class="btn btn-lg mt-4" onclick="enableScroll()"> Lihat Undangan</a>
@@ -70,7 +69,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
                     <h2>Acara Pernikahan</h2>
-                    <h3>Yang insya Allah akan diselenggarakan pada 28 Desember 2024 di Kemiling, Bandar Lampung.</h3>
+                    <h3>Yang insya Allah akan diselenggarakan pada {{$info->akad}}</h3>
                     <p>Oleh karena itu, dengan segala hormat, kami bermaksud untuk mengundang Bapak/Ibu, Saudara/i, untuk hadir pada acara pernikahan kami.</p>
                 </div>
             </div>
@@ -79,12 +78,12 @@
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-8 text-end">
-                        <h3>Yanuar Ary Syahputra</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat reprehenderit rem facere necessitatibus perferendis eveniet enim, cupiditate deleniti! Est atque quam ipsum ad, perspiciatis sapiente aliquam doloremque dicta soluta eius!</p>
-                        <p>Putra dari Bpk. Lorem <br> dan Ibu Ipsum</p>
+                        <h3>{{ $data->nama_pria}}</h3>
+                        <p>{{$data->story_pria}}</p>
+                        <p>Putra dari Bpk. {{ $data->nama_ayah_pria}} <br> dan Ibu {{ $data->nama_ibu_pria}}</p>
                     </div>
                     <div class="col-4">
-                        <img src="{{asset('asetundangan/img/mempelai2.png')}}" alt="Yanuar" class="img-responsive rounded-circle">
+                        <img src="{{asset('asetundangan/img/mempelai2.png')}}" alt="" class="img-responsive rounded-circle">
                     </div>
                 </div>
             </div>
@@ -94,12 +93,12 @@
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-4">
-                        <img src="{{asset('asetundangan/img/mempelai1.png')}}" alt="Yanuar" class="img-responsive rounded-circle">
+                        <img src="{{asset('asetundangan/img/mempelai1.png')}}" alt="" class="img-responsive rounded-circle">
                     </div>
                     <div class="col-8">
-                        <h3>Tria Mailan Karemoi</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat reprehenderit rem facere necessitatibus perferendis eveniet enim, cupiditate deleniti! Est atque quam ipsum ad, perspiciatis sapiente aliquam doloremque dicta soluta eius!</p>
-                        <p>Putra dari Bpk. Sutan <br> dan Ibu Erna</p>
+                        <h3>{{ $data->nama_wanita}}</h3>
+                        <p>{{$data->story_wanita}}</p>
+                        <p>Putra dari Bpk. {{ $data->nama_ayah_wanita}} <br> dan Ibu. {{ $data->nama_ibu_wanita}}</p>
                     </div>
                 </div>
             </div>
@@ -113,7 +112,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 col-10 text-center">
                     <h2>Informasi Acara</h2>
-                    <p class="alamat"> Alamat: Hotel Grand Mercure. <br>Pelita, Engal, Kota Bandar Lampung, Lampung 35213</p>
+                    <p class="alamat"> Alamat: {{$info->tempat}}.</p>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d496.499965056263!2d105.2576745!3d-5.4170098!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40dbf85ff660bd%3A0x82ddd556a29c05c6!2sGrand%20Mercure%20Lampung!5e0!3m2!1sen!2sid!4v1713374708716!5m2!1sen!2sid" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <a href="https://maps.app.goo.gl/y4R1zZCWjTszVm7q9" target="_blank" class="btn btn-light btn-sm my-4">Klik untuk lihat Maps</a>
                     <p class="description">Diharapkan untuk tidak salah alamat dan tanggal. Apabila tiba di tujuan namun tidak ada
@@ -130,11 +129,11 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-6">
                                     <i class="bi bi-clock d-block"></i>
-                                    <span>08.00 - 10.00</span>
+                                    <span>{{$info->pukul_akad}}</span>
                                 </div>
                                 <div class="col-md-6">
                                     <i class="bi bi-calendar3 d-block"></i>
-                                    <span>Minggu, 28 Desember 2024</span>
+                                    <span>{{$info->akad}}</span>
                                 </div>
                             </div>
                         </div>
@@ -149,11 +148,11 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-6">
                                     <i class="bi bi-clock d-block"></i>
-                                    <span>11.00 - Selesai</span>
+                                    <span>{{$info->pukul_resepsi}}</span>
                                 </div>
                                 <div class="col-md-6">
                                     <i class="bi bi-calendar3 d-block"></i>
-                                    <span>Minggu, 28 Desember 2024</span>
+                                    <span>{{$info->resepsi}}</span>
                                 </div>
                             </div>
                         </div>
@@ -184,10 +183,10 @@
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                 <h3>Pertama Berkenalan</h3>
-                                <span>2 Desember 2022</span>
+
                             </div>
                             <div class="div timeline-body">
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae quia soluta saepe necessitatibus dicta laboriosam.
+                                <p>{{$story->kenal}}.
                                 </p>
                             </div>
                             </div>
@@ -197,11 +196,10 @@
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                 <h3>Mulai Dekat</h3>
-                                <span>11 Desember 2022</span>
+                                
                             </div>
                             <div class="div timeline-body">
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae quia soluta saepe necessitatibus dicta laboriosam.
-                                </p>
+                                <p>{{$story->dekat}}.</p>
                             </div>
                             </div>
                         </li>
@@ -210,11 +208,10 @@
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                 <h3>Berpacaran</h3>
-                                <span>8 January 2023</span>
+
                             </div>
                             <div class="div timeline-body">
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae quia soluta saepe necessitatibus dicta laboriosam.
-                                </p>
+                            <p>{{$story->pacaran}}.</p>
                             </div>
                             </div>
                         </li>
@@ -223,11 +220,10 @@
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                 <h3>Menikah</h3>
-                                <span>28 Desember 2024</span>
+
                             </div>
                             <div class="div timeline-body">
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae quia soluta saepe necessitatibus dicta laboriosam.
-                                </p>
+                            <p>{{$story->menikah}}.</p>
                             </div>
                             </div>
                         </li>
@@ -297,13 +293,13 @@
             <div class="row justify-content-center text-center">
             <div class="col-md-6">
                     <div class="card text-center text-bg-light">
-                        <div class="card-header">Bank BRI</div>
+                        <div class="card-header">{{$rek->namabank}}</div>
                         <div class="card-body">
                             <div class="row justify-content-center">
                                 <div class="col-md-6">
                                     <i class="bi bi-wallet2 d-block"></i>
-                                    <span>No Rek. 12345678</span>
-                                    <span>An. Yanuar Ary Syahputra</span>
+                                    <span>No Rek. {{$rek->norek}}</span>
+                                    <span>An. {{$rek->nama}}</span>
                                 </div>
                             </div>
                         </div>
@@ -313,13 +309,13 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card text-center text-bg-light">
-                        <div class="card-header">Bank BCA</div>
+                        <div class="card-header">{{$rek->namabank_b}}</div>
                         <div class="card-body">
                             <div class="row justify-content-center">
                                 <div class="col-md-6">
                                     <i class="bi bi-wallet2 d-block"></i>
-                                    <span>No Rek. 12345678</span>
-                                    <span>An. Yanuar Ary Syahputra</span>
+                                    <span>No Rek. {{$rek->norek_b}}</span>
+                                    <span>An. {{$rek->nama_b}}</span>
                                 </div>
                             </div>
                         </div>
