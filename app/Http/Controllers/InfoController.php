@@ -12,6 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class InfoController extends Controller
 {
     //
+
     public function store_info(Request $request)
     {
         $info = Info::create([
@@ -26,4 +27,6 @@ class InfoController extends Controller
         return redirect()->route('datapengantin')->with('toast_success','Data Pengantin Berhasil Disimpan');
 
     }
+
+    
 }

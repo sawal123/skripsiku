@@ -83,8 +83,12 @@
                         <p>Putra dari Bpk. {{ $data->nama_ayah_pria}} <br> dan Ibu {{ $data->nama_ibu_pria}}</p>
                     </div>
                     <div class="col-4">
-                        <img src="{{asset('asetundangan/img/mempelai2.png')}}" alt="" class="img-responsive rounded-circle">
+                        @if ($foto->fotopria)
+                        <img src="{{ asset('storage/' . $foto->fotopria) }}" alt="" class="img-responsive rounded-circle">
+                        @else
+                        @endif
                     </div>
+                    
                 </div>
             </div>
 
@@ -93,7 +97,10 @@
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-4">
-                        <img src="{{asset('asetundangan/img/mempelai1.png')}}" alt="" class="img-responsive rounded-circle">
+                    @if ($foto->fotowanita)
+                        <img src="{{ asset('storage/' . $foto->fotowanita) }}" alt="" class="img-responsive rounded-circle">
+                        @else
+                        @endif
                     </div>
                     <div class="col-8">
                         <h3>{{ $data->nama_wanita}}</h3>
@@ -179,7 +186,10 @@
                 <div class="col">
                     <ul class="timeline">
                         <li>
-                            <div class="timeline-image" style="background-image: url('/asetundangan/img/mempelai1.png');"></div>
+                        @if ($foto->fotocerita1)
+                            <img class="timeline-image" src="{{ asset('storage/' . $foto->fotocerita1) }}" alt="">
+                        @else
+                        @endif
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                 <h3>Pertama Berkenalan</h3>
@@ -192,8 +202,11 @@
                             </div>
                         </li>
                         <li class="timeline-inverted">
-                            <div class="timeline-image" style="background-image: url('/asetundangan/img/mempelai1.png');"></div>
-                            <div class="timeline-panel">
+                        @if($foto->fotocerita1)
+                        <img class="timeline-image" src="{{ asset('storage/' . $foto->fotocerita2) }}" alt="">
+                        @else
+                        @endif    
+                        <div class="timeline-panel">
                                 <div class="timeline-heading">
                                 <h3>Mulai Dekat</h3>
                                 
@@ -204,8 +217,11 @@
                             </div>
                         </li>
                         <li>
-                            <div class="timeline-image" style="background-image: url('/asetundangan/img/mempelai1.png');"></div>
-                            <div class="timeline-panel">
+                        @if($foto->fotocerita3)
+                        <img class="timeline-image" src="{{ asset('storage/' . $foto->fotocerita3) }}" alt="">
+                        @else
+                        @endif                            
+                        <div class="timeline-panel">
                                 <div class="timeline-heading">
                                 <h3>Berpacaran</h3>
 
@@ -216,8 +232,11 @@
                             </div>
                         </li>
                         <li class="timeline-inverted">
-                            <div class="timeline-image" style="background-image: url('/asetundangan/img/mempelai1.png');"></div>
-                            <div class="timeline-panel">
+                        @if($foto->fotocerita4)
+                        <img class="timeline-image" src="{{ asset('storage/' . $foto->fotocerita4) }}" alt="">
+                        @else
+                        @endif                            
+                        <div class="timeline-panel">
                                 <div class="timeline-heading">
                                 <h3>Menikah</h3>
 

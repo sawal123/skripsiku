@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\User;
 use App\Models\Pengantin;
 use App\Models\Info;
 use App\Models\Story;
 use App\Models\Rekening;
+use App\Models\Foto;
 use App\Http\Controllers\Controller;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -23,7 +26,8 @@ class SendUndanganController extends Controller
         $info = Info::where('uuid_info', Auth::user()->uuid)->first();
         $story = Story::where('uuid_story', Auth::user()->uuid)->first();
         $rek = Rekening::where('uuid_rek', Auth::user()->uuid)->first();
-        return view('undanganku', ['qrcode' => $qrcode, 'nama'=>$nama, 'alamat'=>$alamat, 'data'=>$data, 'info'=>$info, 'story'=>$story, 'rek'=>$rek]);
+        $foto = Foto::where('uuid_foto', Auth::user()->uuid)->first();
+        return view('undanganku', ['qrcode' => $qrcode, 'nama'=>$nama, 'alamat'=>$alamat, 'data'=>$data, 'info'=>$info, 'story'=>$story, 'rek'=>$rek, 'foto'=>$foto]);
     }
 
 }

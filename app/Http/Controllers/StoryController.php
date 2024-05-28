@@ -25,4 +25,6 @@ class StoryController extends Controller
         return redirect()->route('datapengantin')->with('toast_success','Data Pengantin Berhasil Disimpan');
 
     }
+
+    
 }

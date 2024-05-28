@@ -10,6 +10,7 @@ use App\Http\Controllers\DataPengantinController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\RekeningController;
+use App\Http\Controllers\FotoController;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
@@ -46,10 +47,13 @@ Route::get('/scan', [ScanController::class, 'index'])->name('scan');
 Route::get('/download', [App\Http\Controllers\DaftarHadirController::class, 'download'])->name('download');
 Route::get('/datapengantin', [DataPengantinController::class, 'index'])->name('datapengantin');
 Route::get('/tema', [HomeController::class, 'tema'])->name('tema');
+Route::get('/lihatdata', [DataPengantinController::class, 'lihatdata'])->name('lihatdata');
 Route::post('/store', [DataPengantinController::class, 'store'])->name('store');
 Route::post('/store_info', [InfoController::class, 'store_info'])->name('store_info');
 Route::post('/store_rek', [RekeningController::class, 'store_rek'])->name('store_rek');
 Route::post('/store_story', [StoryController::class, 'store_story'])->name('store_story');
+Route::post('/store_foto', [FotoController::class, 'store_foto'])->name('store_foto');
+
 
 
 

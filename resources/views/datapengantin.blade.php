@@ -11,6 +11,8 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('baackend/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{{ asset('baackend/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -255,6 +257,33 @@
                         </div>
                     <!-- End Modal Pengantin -->
 
+                    <table class="table table-striped border">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Pengantin</th>
+                        <th scope="col">Nama Ayah</th>
+                        <th scope="col">Nama Ibu</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($data as $no => $item)
+                      <tr>
+                        <td>{{$no+1}}</td>
+                        <td>{{$item['nama_pria']}}</td>
+                        <td>{{$item['nama_ayah_pria']}}</td>
+                        <td>{{$item['nama_ibu_pria']}}</td>
+                      </tr>
+                      <tr>
+                        <td>{{$no+2}}</td>
+                        <td>{{$item['nama_wanita']}}</td>
+                        <td>{{$item['nama_ayah_wanita']}}</td>
+                        <td>{{$item['nama_ibu_wanita']}}</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+
                     <h4>Informasi Acara</h4>
                     <a class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#modalinfo">Informasi Acara <i class="mx-1 fas fa-cloud-download-alt"></i></a>
                     <!--Modal Data info-->
@@ -273,12 +302,22 @@
                             @include('sweetalert::alert')
                                 <div class="row g-3 pt-4 justify-content-center">
                                     <div class="col-4">
-                                        <h6>Akad</h6>
-                                        <input type="text" class="form-control" id="akad" name="akad" placeholder="Akad Nikah">
+                                        <label>Akad</label>
+                                        <div class="input-group date" id="akad" data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input" data-target="#akad" id="akad" name="akad">
+                                            <div class="input-group-append" data-target="#akad" data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>                                    
                                     </div>
                                     <div class="col-4">
-                                    <h6>Resepsi</h6>
-                                        <input type="text" class="form-control" id="resepsi" name="resepsi" placeholder="Resepsi">
+                                    <label>Resepsi</label>
+                                        <div class="input-group date" id="resepsi" data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input" data-target="#resepsi" id="resepsi" name="resepsi">
+                                            <div class="input-group-append" data-target="#resepsi" data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row g-3 pt-4 justify-content-center">
@@ -307,6 +346,31 @@
                         </div>
                         </div>
                     <!-- End Modal Info -->
+
+                    <table class="table table-striped border">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Akad Nikah</th>
+                        <th scope="col">Resepsi</th>
+                        <th scope="col">Tempat</th>
+                        <th scope="col">Waktu Akad</th>
+                        <th scope="col">Waktu Resepsi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($info as $no => $item)
+                      <tr>
+                        <td>{{$no+1}}</td>
+                        <td>{{$item['akad']}}</td>
+                        <td>{{$item['resepsi']}}</td>
+                        <td>{{$item['tempat']}}</td>
+                        <td>{{$item['pukul_akad']}}</td>
+                        <td>{{$item['pukul_resepsi']}}</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
                     
                     <h4>Story Pengantin</h4>
                     <a class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#modalstory">Story Pengantin <i class="mx-1 fas fa-cloud-download-alt"></i></a>
@@ -354,6 +418,29 @@
                         </div>
                         </div>
                     <!-- End Modal Story -->
+
+                    <table class="table table-striped border">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Awal Kenal</th>
+                        <th scope="col">Mulai Dekat</th>
+                        <th scope="col">Berpacaran</th>
+                        <th scope="col">Menikah</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($story as $no => $item)
+                      <tr>
+                        <td>{{$no+1}}</td>
+                        <td>{{$item['kenal']}}</td>
+                        <td>{{$item['dekat']}}</td>
+                        <td>{{$item['pacaran']}}</td>
+                        <td>{{$item['menikah']}}</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
 
                     <h4>Data Amplop</h4>
                     <a class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#modalamplop">Amplop <i class="mx-1 fas fa-cloud-download-alt"></i></a>
@@ -414,6 +501,128 @@
                         </div>
                     <!-- End Modal Story -->
 
+                    <table class="table table-striped border">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Pemilik</th>
+                        <th scope="col">Nama Bank</th>
+                        <th scope="col">No Rekening</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($rek as $no => $item)
+                      <tr>
+                        <td>{{$no+1}}</td>
+                        <td>{{$item['nama']}}</td>
+                        <td>{{$item['namabank']}}</td>
+                        <td>{{$item['norek']}}</td>
+                      </tr>
+                      <tr>
+                        <td>{{$no+2}}</td>
+                        <td>{{$item['nama_b']}}</td>
+                        <td>{{$item['namabank_b']}}</td>
+                        <td>{{$item['norek_b']}}</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+
+
+                    <h4>Upload Foto</h4>
+                    <a class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#modalfoto">Upload Foto <i class="mx-1 fas fa-cloud-download-alt"></i></a>
+                    <!--Modal Data Amplop-->
+                    <div class="modal fade" id="modalfoto">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h4 class="modal-title text-center">Upload Foto</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <form action="{{ route('store_foto') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @include('sweetalert::alert')
+                                <div class="row pt-2">
+                                    <div class="mb-3">
+                                        <label for="fotopria">Pengantin Pria</label>
+                                        <input class="form-control @error('fotopria') is-invalid @enderror" type="file" id="fotopria" name="fotopria">
+                                        @error('fotopria')
+                                        <div class="invalid-feedback">
+                                            {{ $message}}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="mb-3">
+                                        <label for="fotowanita">Pengantin Wanita</label>
+                                        <input type="file" class="form-control @error('fotowanita') is-invalid @enderror" id="fotowanita" name="fotowanita">
+                                        @error('fotowanita')
+                                        <div class="invalid-feedback">
+                                            {{ $message}}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="mb-3">
+                                        <label for="fotocerita1">Foto Cerita</label>
+                                        <input type="file" class="form-control @error('fotocerita1') is-invalid @enderror" id="fotocerita1" name="fotocerita1">
+                                        @error('fotocerita1')
+                                        <div class="invalid-feedback">
+                                            {{ $message}}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="mb-3">
+                                        <label for="fotocerita2">Foto Cerita</label>
+                                        <input type="file" class="form-control @error('fotocerita2') is-invalid @enderror" id="fotocerita2" name="fotocerita2">
+                                        @error('fotocerita2')
+                                        <div class="invalid-feedback">
+                                            {{ $message}}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="mb-3">
+                                        <label for="fotocerita3">Foto Cerita</label>
+                                        <input type="file" class="form-control @error('fotocerita3') is-invalid @enderror" id="fotocerita3" name="fotocerita3">
+                                        @error('fotocerita3')
+                                        <div class="invalid-feedback">
+                                            {{ $message}}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="mb-3">
+                                        <label for="fotocerita4">Foto Cerita</label>
+                                        <input type="file" class="form-control @error('fotocerita4') is-invalid @enderror" id="fotocerita4" name="fotocerita4">
+                                        @error('fotocerita4')
+                                        <div class="invalid-feedback">
+                                            {{ $message}}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                    
+                                <div class="row pt-4 modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Simpan Data</button>
+                                    </div>
+                                </div>
+                        </form>
+                            </div>
+                        </div>
+                        </div>
+                    <!-- End Modal Story -->
+
                     </div>    
                 <!-- /.container-fluid -->
                 </div>
@@ -460,6 +669,17 @@
                         <script src="{{ asset('baackend/dist/js/demo.js') }}"></script>
                         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
                         <script src="{{ asset('baackend/dist/js/pages/dashboard.js') }}"></script>
+
+                        <script>
+                            $(function(){
+                                $('#akad').datetimepicker({
+                                    format: 'DD/MM/YYYY'
+                                });
+                                $('#resepsi').datetimepicker({
+                                    format: 'DD/MM/YYYY'
+                                });
+                            })
+                        </script>
 </body>
 
 </html>

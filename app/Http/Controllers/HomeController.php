@@ -40,6 +40,8 @@ class HomeController extends Controller
     }
 
     
+
+    
     public function addTamu($nama, $alamat){
         $tamu = Tamu::create([
             'uuid_user'=>Auth::user()->uuid,

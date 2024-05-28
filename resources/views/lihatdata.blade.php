@@ -11,6 +11,8 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('baackend/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{{ asset('baackend/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -122,22 +124,13 @@
 
                         <li class="nav-header">MASTER</li>
                         <li class="nav-item">
-                            <a href="{{ route('tema') }}" class="nav-link">
-                                <i class="nav-icon fas fa-file-image"></i>
-                                <p>
-                                    Pilih Tema Undangan
-                                    <span class="badge badge-info right"></span>
-                                </p>
-                            </a>   
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('lihatdata') }}" class="nav-link">
-                                <i class="nav-icon fas fa-database"></i>
-                                <p>
-                                    Lihat Data Pengantin
-                                    <span class="badge badge-info right"></span>
-                                </p>
-                            </a>   
+                            <a href="{{ route('home')}}" class="nav-link">
+                            <i class="nav-icon fas fa-house-user"></i>
+                            <p>
+                                Beranda
+                                <span class="badge badge-info right"></span>
+                            </p>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('scan') }}" class="nav-link">
@@ -191,42 +184,132 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                        <h4 class="pt-2 ">Hi, {{auth()->user()->name}}</h4>
+                        <h4 class="pt-2 ">Hi, {{auth()->user()->name}} silahkan isikan data nya yah..</h4>
+                        <p>Jika sudah lengkap, jangan lupa untuk akses http://127.0.0.1:8000/undanganku/namatamu/alamat 
+                        <br>Untuk Lihat Undangan, Kemudian Share Link Tersebut Kepada Tamu 
+                        <br>NOTE : Nama Tamu & Alamat isikan Nama Orang & Alamat Orang yang kamu undang yah</p>
                         </div><!-- /.row -->
-                    </div><!-- /.container-fluid -->
+                    </div>
+                    <h4>Data Pengantin</h4>
+                    <table class="table table-striped border">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Pengantin</th>
+                        <th scope="col">Nama Ayah</th>
+                        <th scope="col">Nama Ibu</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($data as $no => $item)
+                      <tr>
+                        <td>{{$no+1}}</td>
+                        <td>{{$item['nama_pria']}}</td>
+                        <td>{{$item['nama_ayah_pria']}}</td>
+                        <td>{{$item['nama_ibu_pria']}}</td>
+                      </tr>
+                      <tr>
+                        <td>{{$no+2}}</td>
+                        <td>{{$item['nama_wanita']}}</td>
+                        <td>{{$item['nama_ayah_wanita']}}</td>
+                        <td>{{$item['nama_ibu_wanita']}}</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+
+                    <h4>Informasi Acara</h4>
+                    <table class="table table-striped border">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Akad Nikah</th>
+                        <th scope="col">Resepsi</th>
+                        <th scope="col">Tempat</th>
+                        <th scope="col">Waktu Akad</th>
+                        <th scope="col">Waktu Resepsi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($info as $no => $item)
+                      <tr>
+                        <td>{{$no+1}}</td>
+                        <td>{{$item['akad']}}</td>
+                        <td>{{$item['resepsi']}}</td>
+                        <td>{{$item['tempat']}}</td>
+                        <td>{{$item['pukul_akad']}}</td>
+                        <td>{{$item['pukul_resepsi']}}</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                    
+                    <h4>Story Pengantin</h4>
+                    <table class="table table-striped border">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Awal Kenal</th>
+                        <th scope="col">Mulai Dekat</th>
+                        <th scope="col">Berpacaran</th>
+                        <th scope="col">Menikah</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($story as $no => $item)
+                      <tr>
+                        <td>{{$no+1}}</td>
+                        <td>{{$item['kenal']}}</td>
+                        <td>{{$item['dekat']}}</td>
+                        <td>{{$item['pacaran']}}</td>
+                        <td>{{$item['menikah']}}</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+
+                    <h4>Data Amplop</h4>
+                    <table class="table table-striped border">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Pemilik</th>
+                        <th scope="col">Nama Bank</th>
+                        <th scope="col">No Rekening</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($rek as $no => $item)
+                      <tr>
+                        <td>{{$no+1}}</td>
+                        <td>{{$item['nama']}}</td>
+                        <td>{{$item['namabank']}}</td>
+                        <td>{{$item['norek']}}</td>
+                      </tr>
+                      <tr>
+                        <td>{{$no+2}}</td>
+                        <td>{{$item['nama_b']}}</td>
+                        <td>{{$item['namabank_b']}}</td>
+                        <td>{{$item['norek_b']}}</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
                 </div>
-                <!-- /.content-header -->
+                        </div>
+                        </div>
+                    <!-- End Modal Story -->
 
-                <!-- Main content -->
-                <section class="content">
-                    <div class="container-fluid">
-                        <!-- Small boxes (Stat box) -->
-                        <div class="row">
-                            <div class="col-lg-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-info">
-                                    <div class="inner">
-                                        <h3>{{ $totaltamu }}</h3>
-                                        <h3></h3>
-
-                                        <p>Total Tamu</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                    <a href="{{ route('daftarhadir') }}" class="small-box-footer">Lihat Detail <i
-                                            class="fas fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                            <!-- ./col -->
-
-
+                    </div>    
+                <!-- /.container-fluid -->
+                </div>
                             <!-- Control Sidebar -->
                             <aside class="control-sidebar control-sidebar-dark">
                                 <!-- Control sidebar content goes here -->
                             </aside>
-                            <!-- /.control-sidebar -->
+                          <!-- /.control-sidebar -->
                         </div>
+                        
                         <!-- ./wrapper -->
 
                         <!-- jQuery -->
