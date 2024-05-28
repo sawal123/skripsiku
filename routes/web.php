@@ -11,6 +11,7 @@ use App\Http\Controllers\InfoController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\RekeningController;
 use App\Http\Controllers\FotoController;
+use App\Http\Controllers\DaftarUndanganController;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
@@ -48,11 +49,14 @@ Route::get('/download', [App\Http\Controllers\DaftarHadirController::class, 'dow
 Route::get('/datapengantin', [DataPengantinController::class, 'index'])->name('datapengantin');
 Route::get('/tema', [HomeController::class, 'tema'])->name('tema');
 Route::get('/lihatdata', [DataPengantinController::class, 'lihatdata'])->name('lihatdata');
+Route::get('/daftarundangan', [DaftarUndanganController::class, 'index'])->name('daftarundangan');
+
 Route::post('/store', [DataPengantinController::class, 'store'])->name('store');
 Route::post('/store_info', [InfoController::class, 'store_info'])->name('store_info');
 Route::post('/store_rek', [RekeningController::class, 'store_rek'])->name('store_rek');
 Route::post('/store_story', [StoryController::class, 'store_story'])->name('store_story');
 Route::post('/store_foto', [FotoController::class, 'store_foto'])->name('store_foto');
+Route::post('/store_dtamu', [DaftarUndanganController::class, 'store_dtamu'])->name('store_dtamu');
 
 
 

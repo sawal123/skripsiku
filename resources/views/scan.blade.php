@@ -132,6 +132,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('daftarundangan')}}" class="nav-link">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>
+                                Daftar Undangan
+                                <span class="badge badge-info right"></span>
+                            </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('daftarhadir') }}" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>

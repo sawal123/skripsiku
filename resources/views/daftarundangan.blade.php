@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Daftar Hadir Tamu</title>
+  <title>Daftar Undangan</title>
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
   <!-- Google Font: Source Sans Pro -->
@@ -113,46 +113,53 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           
-               <li class="nav-header">MASTER</li>
-                        <li class="nav-item">
-                            <a href="{{ route('daftarundangan') }}" class="nav-link">
-                                <i class="nav-icon fas fa-clipboard-list"></i>
-                                <p>
-                                    Daftar Undangan
-                                    <span class="badge badge-info right"></span>
-                                </p>
-                            </a>   
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('scan') }}" class="nav-link">
-                                <i class="nav-icon fas fa-qrcode"></i>
-                                <p>
-                                    Scan QR Code
-                                    <span class="badge badge-info right"></span>
-                                </p>
-                            </a>   
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a href="{{ route('undanganku') }}" class="nav-link">
-                                <i class="nav-icon far fa-image"></i>
-                                <p>
-                                    Undangan Ku
-                                </p>
-                            </a>
-                        </li> --}}
-                        <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                        <i class="nav-icon fas fa-power-off"></i>
-                                <p>
-                                    Logout
-                                </p>
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                        </form>
-                        </li> 
+        <li class="nav-header">MASTER</li>
+          <li class="nav-item">
+            <a href="{{ route('home')}}" class="nav-link">
+              <i class="nav-icon fas fa-house-user"></i>
+              <p>
+                Beranda
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('scan')}}" class="nav-link">
+              <i class="nav-icon fas fa-qrcode"></i>
+              <p>
+                Scan QR Code
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('daftarhadir')}}" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Daftar Hadir Tamu
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
+          {{-- <li class="nav-item">
+            <a href="{{ route('undanganku')}}" class="nav-link">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Undangan Ku
+              </p>
+            </a>
+          </li>--}} 
+          <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+                  <i class="nav-icon fas fa-power-off"></i>
+                  <p>Logout</p>
+                </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                  </form>
+          </li> 
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -166,28 +173,81 @@
           <div class="container-fluid">
             <div class="row pt-5">
               <div class="col-md-5 mx-auto">
-                <h1 class="mb-3 text-center">Daftar Tamu Hadir</h1>
+                <h1 class="mb-3 text-center">Daftar Undangan</h1>
               </div>
             </div>
           </div>
           <div class="container-fluid mx-auto" style="width: 1000px">
-          <a href="{{ route('download') }}" class="btn btn-outline-success mb-2">Download PDF <i class="mx-1 fas fa-cloud-download-alt"></i></a>
-          <table class="table table-striped border">
+          <a class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#modaltamu">Daftar Undangan <i class="mx-1 fas fa-cloud-download-alt"></i></a>
+                    <!--Modal Data Pengantin-->
+                    <div class="modal fade" id="modaltamu">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h4 class="modal-title text-center">Data Tamu Undangan</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <form action="{{ route('store_dtamu') }}" method="post">
+                            @csrf
+                            @include('sweetalert::alert')
+                                <div class="row g-3 pt-4 justify-content-center">
+                                    <div class="col-4">
+                                        <label >Nama Tamu</label>
+                                        <input type="text" class="form-control" id="nama_tamu" name="nama_tamu" placeholder="Nama Tamu">
+                                    </div>
+                                    <div class="col-4">
+                                        <label>Alamat</label>
+                                        <input type="text" class="form-control" id="alamat_tamu" name="alamat_tamu" placeholder="Alamat Tamu">
+                                    </div>
+                                    <div class="col-4">
+                                        <label>No Telp</label>
+                                        <input type="text" class="form-control" id="notelp_tamu" name="notelp_tamu" value="62">
+                                    </div>
+                                </div>    
+                                <div class="row pt-4 modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Simpan Data</button>
+                                    </div>
+                                </div>
+                        </form>
+                            </div>
+                        </div>
+                        </div>          
+                    <table class="table table-striped border">
                     <thead>
                       <tr>
                         <th scope="col">No</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Alamat</th>
-                        <th scope="col">Kehadiran</th>
+                        <th scope="col">No Telp</th>
+                        <th scope="col">Bagikan</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach($data as $no => $item)
+                    @foreach($dtamu as $no => $item)
                       <tr>
                         <td>{{$no+1}}</td>
-                        <td>{{$item['nama']}}</td>
-                        <td>{{$item['alamat']}}</td>
-                        <td>{{$item['created_at']}}</td>
+                        <td>{{$item['nama_tamu']}}</td>
+                        <td>{{$item['alamat_tamu']}}</td>
+                        <td>{{$item['notelp_tamu']}}</td>
+                        <td><a href="https://wa.me/{{$item->notelp_tamu}}?text=Assalamualaikum warahmatullahi wabarakatuh. Yth. {{$item->nama_tamu}} 
+
+
+                            Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara pernikahan kami {{$pengantin->nama_pria}} dan {{$pengantin->nama_wanita}}
+
+                            Berikut adalah link undangan kami, untuk info selengkapnya dari acara silahkan kunjungi : https://yasproject.my.id/undanganku/{{$item->nama_tamu}}/{{$item->alamat_tamu}} 
+
+                            
+                            Jangan lupa yah untuk menunjukkan QR-Code yang ada pada undangan kepada panitia untuk mengisi daftar hadir. 
+
+                            
+                            Terukir kesan yang dalam dihati kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk mengiringi, dan memberikan doa restu kepada kami dalam menapaki lembaran baru perjalanan hidup.
+
+                            
+                            Terima kasih banyak atas perhatiannya. Wassalamu'alaikum Wr. Wb." class="btn btn-success">Bagikan <i class="mx-1 fab fa-whatsapp"></i></a></td>
                       </tr>
                       @endforeach
                     </tbody>

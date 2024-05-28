@@ -15,6 +15,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Alamat</th>
+                        <th scope="col">No Telp</th>
                         <th scope="col">Jam Checkin</th>
                       </tr>
                     </thead>
@@ -24,6 +25,7 @@
                         <td>{{$no+1}}</td>
                         <td>{{$item['nama']}}</td>
                         <td>{{$item['alamat']}}</td>
+                        <td>{{$item['notelp']}}</td>
                         <td>{{$item['created_at']}}</td>
                       </tr>
                       @endforeach

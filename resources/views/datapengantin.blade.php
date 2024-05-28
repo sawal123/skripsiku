@@ -184,10 +184,6 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                        <h4 class="pt-2 ">Hi, {{auth()->user()->name}} silahkan isikan data nya yah..</h4>
-                        <p>Jika sudah lengkap, jangan lupa untuk akses http://127.0.0.1:8000/undanganku/namatamu/alamat 
-                        <br>Untuk Lihat Undangan, Kemudian Share Link Tersebut Kepada Tamu 
-                        <br>NOTE : Nama Tamu & Alamat isikan Nama Orang & Alamat Orang yang kamu undang yah</p>
                         </div><!-- /.row -->
                     </div>
                     <h4>Data Pengantin</h4>
