@@ -16,12 +16,12 @@ class CreateRekeningsTable extends Migration
         Schema::create('rekenings', function (Blueprint $table) {
                 $table->id();
                 $table->string('uuid_rek');
-                $table->string('namabank');
-                $table->string('norek');
-                $table->string('nama');
-                $table->string('namabank_b');
-                $table->string('norek_b');
-                $table->string('nama_b');
+                $table->string('namabank')->nullable();
+                $table->string('norek')->nullable();
+                $table->string('nama')->nullable();
+                $table->string('namabank_b')->nullable();
+                $table->string('norek_b')->nullable();
+                $table->string('nama_b')->nullable();
                 $table->timestamps();
                 $table->foreign('uuid_rek')->references('uuid')->on('users');
             });

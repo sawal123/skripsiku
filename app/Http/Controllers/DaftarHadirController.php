@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Tamu;
+use App\Models\DaftarUndangan;
 use Mpdf\Mpdf;
 
 

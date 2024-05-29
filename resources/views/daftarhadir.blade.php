@@ -114,6 +114,15 @@
                with font-awesome or any other icon font library -->
           
                <li class="nav-header">MASTER</li>
+                      <li class="nav-item">
+                            <a href="{{ route('home')}}" class="nav-link">
+                            <i class="nav-icon fas fa-house-user"></i>
+                            <p>
+                                Beranda
+                                <span class="badge badge-info right"></span>
+                            </p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{ route('daftarundangan') }}" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard-list"></i>

@@ -178,7 +178,7 @@
             </div>
           </div>
           <div class="container-fluid mx-auto" style="width: 1000px">
-          <a class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#modaltamu">Daftar Undangan <i class="mx-1 fas fa-cloud-download-alt"></i></a>
+          <a class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#modaltamu">Undang Tamu <i class="mx-1 fas fa-user-plus"></i></a>
                     <!--Modal Data Pengantin-->
                     <div class="modal fade" id="modaltamu">
                         <div class="modal-dialog">

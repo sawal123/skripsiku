@@ -16,10 +16,10 @@ class CreateStoriesTable extends Migration
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
             $table->string('uuid_story');
-            $table->string('kenal');
-            $table->string('dekat');
-            $table->string('pacaran');
-            $table->string('menikah');
+            $table->string('kenal')->nullable();
+            $table->string('dekat')->nullable();
+            $table->string('pacaran')->nullable();
+            $table->string('menikah')->nullable();
             $table->timestamps();
             $table->foreign('uuid_story')->references('uuid')->on('users');
     });

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Tamu;
 use App\Models\User;
+use App\Models\DaftarUndangan;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -31,7 +32,8 @@ class HomeController extends Controller
     public function index()
     {
         $totaltamu = Tamu::where('uuid_user', Auth::user()->uuid)->get()->count();
-        return view('home', compact('totaltamu'));
+        $totalundangan = DaftarUndangan::where('uuid_dtamu', Auth::user()->uuid)->get()->count();
+        return view('home', compact('totaltamu','totalundangan'));
     }
 
     public function tema()
