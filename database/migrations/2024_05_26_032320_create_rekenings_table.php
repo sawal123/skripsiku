@@ -16,6 +16,7 @@ class CreateRekeningsTable extends Migration
         Schema::create('rekenings', function (Blueprint $table) {
                 $table->id();
                 $table->string('uuid_rek');
+                $table->string('uuid_user');
                 $table->string('namabank')->nullable();
                 $table->string('norek')->nullable();
                 $table->string('nama')->nullable();
@@ -23,7 +24,7 @@ class CreateRekeningsTable extends Migration
                 $table->string('norek_b')->nullable();
                 $table->string('nama_b')->nullable();
                 $table->timestamps();
-                $table->foreign('uuid_rek')->references('uuid')->on('users');
+                // $table->foreign('uuid_rek')->references('uuid')->on('users');
             });
     }
 

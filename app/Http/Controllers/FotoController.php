@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+use App\Models\Foto;
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Models\Foto;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class FotoController extends Controller
@@ -26,7 +27,8 @@ class FotoController extends Controller
             'fotocerita4' => 'required'
         ]);
 
-        $validatedData['uuid_foto'] = Auth::user()->uuid;
+        $validatedData['uuid_foto'] = Str::uuid();
+        $validatedData['uuid_user'] = Auth::user()->uuid;
         $validatedData['fotopria'] = $request->file('fotopria')->store('foto-pengantin');
         $validatedData['fotowanita'] = $request->file('fotowanita')->store('foto-pengantin');
         $validatedData['fotocerita1'] = $request->file('fotocerita1')->store('foto-pengantin');

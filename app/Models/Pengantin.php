@@ -10,6 +10,7 @@ class Pengantin extends Model
     use HasFactory;
     protected $fillable =[
         'uuid_pengantin',
+        'uuid_user',
         'nama_pria',
         'nama_wanita',
         'nama_ayah_pria',
@@ -17,7 +18,8 @@ class Pengantin extends Model
         'nama_ibu_pria',
         'nama_ibu_wanita',
         'story_pria',
-        'story_wanita'
+        'story_wanita',
+        'slug'
     ];
 
 }

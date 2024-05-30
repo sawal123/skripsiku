@@ -19,7 +19,7 @@ class CreateTamusTable extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->timestamps();
-            $table->foreign('uuid_user')->references('uuid')->on('users');
+            // $table->foreign('uuid_user')->references('uuid')->on('users');
         });
 
         

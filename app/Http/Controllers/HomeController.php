@@ -42,15 +42,21 @@ class HomeController extends Controller
     }
 
     
+    
 
     
-    public function addTamu($nama, $alamat){
+    public function addTamu($nama, $tamu){
+        $tamus = DaftarUndangan::where('nama_tamu', $tamu)->first();
+        // dd($tamus);
         $tamu = Tamu::create([
             'uuid_user'=>Auth::user()->uuid,
-            'nama'=>$nama,
-            'alamat'=>$alamat
+            'nama'=>$tamu,
+            'alamat'=>$tamus->alamat_tamu
         ]);
         
         return redirect()->back()->with('toast_success', 'Selamat Datang, Silahkan Masuk');
     }
+
+
+    
 }

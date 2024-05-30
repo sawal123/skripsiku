@@ -16,6 +16,7 @@ class CreatePengantinsTable extends Migration
         Schema::create('pengantins', function (Blueprint $table) {
             $table->id();
             $table->string('uuid_pengantin');
+            $table->string('uuid_user');
             $table->string('nama_pria');
             $table->string('nama_wanita');
             $table->string('nama_ayah_pria');
@@ -24,8 +25,9 @@ class CreatePengantinsTable extends Migration
             $table->string('nama_ibu_wanita');
             $table->string('story_pria');
             $table->string('story_wanita');
+            $table->string('slug');
             $table->timestamps();
-            $table->foreign('uuid_pengantin')->references('uuid')->on('users');
+            // $table->foreign('uuid_user')->references('uuid')->on('users');
         });
     }
 

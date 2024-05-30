@@ -16,13 +16,14 @@ class CreateInfosTable extends Migration
         Schema::create('infos', function (Blueprint $table) {
             $table->id();
             $table->string('uuid_info');
+            $table->string('uuid_user');
             $table->string('akad');
             $table->string('resepsi');
             $table->string('tempat');
             $table->string('pukul_akad');
             $table->string('pukul_resepsi');
             $table->timestamps();
-            $table->foreign('uuid_info')->references('uuid')->on('users');
+            // $table->foreign('uuid_info')->references('uuid')->on('users');
         });
     }
 

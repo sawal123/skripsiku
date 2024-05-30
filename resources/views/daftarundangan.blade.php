@@ -238,7 +238,7 @@
 
                             Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara pernikahan kami {{$pengantin->nama_pria}} dan {{$pengantin->nama_wanita}}
 
-                            Berikut adalah link undangan kami, untuk info selengkapnya dari acara silahkan kunjungi : https://yasproject.my.id/undanganku/{{$item->nama_tamu}}/{{$item->alamat_tamu}} 
+                            Berikut adalah link undangan kami, untuk info selengkapnya dari acara silahkan kunjungi : {{url('/undanganku')}}/{{$pengantin->slug}}/{{$item->nama_tamu}}
 
                             
                             Jangan lupa yah untuk menunjukkan QR-Code yang ada pada undangan kepada panitia untuk mengisi daftar hadir. 

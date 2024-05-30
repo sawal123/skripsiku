@@ -17,11 +17,12 @@ class CreateDaftarUndangansTable extends Migration
             Schema::create('daftar_undangans', function (Blueprint $table) {
                 $table->id();
                 $table->string('uuid_dtamu');
+                $table->string('uuid_user');
                 $table->string('nama_tamu');
                 $table->string('alamat_tamu');
                 $table->string('notelp_tamu');
                 $table->timestamps();
-                $table->foreign('uuid_dtamu')->references('uuid')->on('users');
+                // $table->foreign('uuid_dtamu')->references('uuid')->on('users');
             });
     }
 

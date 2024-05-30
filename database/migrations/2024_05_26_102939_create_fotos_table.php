@@ -16,6 +16,7 @@ class CreateFotosTable extends Migration
         Schema::create('fotos', function (Blueprint $table) {
             $table->id();
             $table->string('uuid_foto');
+            $table->string('uuid_user');
             $table->string('fotopria')->nullable();
             $table->string('fotowanita')->nullable();
             $table->string('fotocerita1')->nullable();
@@ -23,7 +24,7 @@ class CreateFotosTable extends Migration
             $table->string('fotocerita3')->nullable();
             $table->string('fotocerita4')->nullable();
             $table->timestamps();
-            $table->foreign('uuid_foto')->references('uuid')->on('users');
+            // $table->foreign('uuid_foto')->references('uuid')->on('users');
         });
     }
 

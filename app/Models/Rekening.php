@@ -10,6 +10,7 @@ class Rekening extends Model
     use HasFactory;
     protected $fillable =[
         'uuid_rek',
+        'uuid_user',
         'namabank',
         'norek',
         'nama',

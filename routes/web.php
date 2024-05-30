@@ -12,6 +12,7 @@ use App\Http\Controllers\StoryController;
 use App\Http\Controllers\RekeningController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\DaftarUndanganController;
+use App\Http\Controllers\PenyewaController;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
@@ -42,23 +43,24 @@ Route::get('/undanganku/{nama}/{alamat}', [SendUndanganController::class, 'undan
 Auth::routes();
 
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/daftarhadir', [App\Http\Controllers\DaftarHadirController::class, 'index'])->name('daftarhadir');
-Route::get('/scan', [ScanController::class, 'index'])->name('scan');
-Route::get('/download', [App\Http\Controllers\DaftarHadirController::class, 'download'])->name('download');
-Route::get('/datapengantin', [DataPengantinController::class, 'index'])->name('datapengantin');
-Route::get('/tema', [HomeController::class, 'tema'])->name('tema');
-Route::get('/lihatdata', [DataPengantinController::class, 'lihatdata'])->name('lihatdata');
-Route::get('/daftarundangan', [DaftarUndanganController::class, 'index'])->name('daftarundangan');
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/daftarhadir', [App\Http\Controllers\DaftarHadirController::class, 'index'])->name('daftarhadir');
+    Route::get('/scan', [ScanController::class, 'index'])->name('scan');
+    Route::get('/download', [App\Http\Controllers\DaftarHadirController::class, 'download'])->name('download');
+    Route::get('/datapengantin', [DataPengantinController::class, 'index'])->name('datapengantin');
+    Route::get('/tema', [HomeController::class, 'tema'])->name('tema');
+    Route::get('/lihatdata', [DataPengantinController::class, 'lihatdata'])->name('lihatdata');
+    Route::get('/daftarundangan', [DaftarUndanganController::class, 'index'])->name('daftarundangan');
+    Route::get('/penyewa', [PenyewaController::class, 'index'])->name('penyewa');
 
-Route::post('/store', [DataPengantinController::class, 'store'])->name('store');
-Route::post('/store_info', [InfoController::class, 'store_info'])->name('store_info');
-Route::post('/store_rek', [RekeningController::class, 'store_rek'])->name('store_rek');
-Route::post('/store_story', [StoryController::class, 'store_story'])->name('store_story');
-Route::post('/store_foto', [FotoController::class, 'store_foto'])->name('store_foto');
-Route::post('/store_dtamu', [DaftarUndanganController::class, 'store_dtamu'])->name('store_dtamu');
+    Route::post('/store', [DataPengantinController::class, 'store'])->name('store');
+    Route::post('/store_info', [InfoController::class, 'store_info'])->name('store_info');
+    Route::post('/store_rek', [RekeningController::class, 'store_rek'])->name('store_rek');
+    Route::post('/store_story', [StoryController::class, 'store_story'])->name('store_story');
+    Route::post('/store_foto', [FotoController::class, 'store_foto'])->name('store_foto');
+    Route::post('/store_dtamu', [DaftarUndanganController::class, 'store_dtamu'])->name('store_dtamu');
+});
 
 
-
-
-Route::get('/add-tamu/{nama}/{alamat}', [HomeController::class, 'addTamu']);
+Route::get('/add-tamu/{slug}/{nama}', [HomeController::class, 'addTamu']);

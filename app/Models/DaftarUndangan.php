@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class DaftarUndangan extends Model
 {
     use HasFactory;
-    protected $fillable =['uuid_dtamu','nama_tamu','alamat_tamu','notelp_tamu'];
+    protected $fillable =['uuid_dtamu','uuid_user','nama_tamu','alamat_tamu','notelp_tamu'];
 }

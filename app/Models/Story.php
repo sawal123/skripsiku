@@ -10,6 +10,7 @@ class Story extends Model
     use HasFactory;
     protected $fillable =[
         'uuid_story',
+        'uuid_user',
         'kenal',
         'dekat',
         'pacaran',

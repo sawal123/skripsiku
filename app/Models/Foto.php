@@ -10,6 +10,7 @@ class Foto extends Model
     use HasFactory;
     protected $fillable =[
         'uuid_foto',
+        'uuid_user',
         'fotopria',
         'fotowanita',
         'fotocerita1',

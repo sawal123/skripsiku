@@ -80,7 +80,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link">
-                        <i class="fas fa-user"> {{auth()->user()->name}}</i>
+                        <i class="fas fa-user"> {{ auth()->user()->name }}</i>
 
                     </a>
                 </li>
@@ -99,7 +99,7 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                    
+
                 <!-- SidebarSearch Form -->
                 <div class="form-inline mt-2">
                     <div class="input-group" data-widget="sidebar-search">
@@ -128,7 +128,7 @@
                                     Pilih Tema Undangan
                                     <span class="badge badge-info right"></span>
                                 </p>
-                            </a>   
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('lihatdata') }}" class="nav-link">
@@ -137,7 +137,7 @@
                                     Lihat Data Pengantin
                                     <span class="badge badge-info right"></span>
                                 </p>
-                            </a>   
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('daftarundangan') }}" class="nav-link">
@@ -146,7 +146,7 @@
                                     Daftar Undangan
                                     <span class="badge badge-info right"></span>
                                 </p>
-                            </a>   
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('scan') }}" class="nav-link">
@@ -155,7 +155,7 @@
                                     Scan QR Code
                                     <span class="badge badge-info right"></span>
                                 </p>
-                            </a>   
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('daftarhadir') }}" class="nav-link">
@@ -164,28 +164,28 @@
                                     Daftar Hadir Tamu
                                     <span class="badge badge-info right"></span>
                                 </p>
-                            </a>    
+                            </a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="{{ route('undanganku') }}" class="nav-link">
-                                <i class="nav-icon far fa-image"></i>
+                        <li class="nav-item" style="display: {{ Auth::user()->role == 'Admin'?'': 'none' }}">
+                            <a href="{{ route('penyewa') }}" class="nav-link">
+                                <i class="nav-icon far fa-user"></i>
                                 <p>
-                                    Undangan Ku
+                                    Penyewa
                                 </p>
                             </a>
-                        </li> --}}
+                        </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}"
+                            <a class="nav-link" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                        <i class="nav-icon fas fa-power-off"></i>
+                                <i class="nav-icon fas fa-power-off"></i>
                                 <p>
                                     Logout
                                 </p>
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                        </form>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </li>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -200,7 +200,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                        <h4 class="pt-2 ">Hi, {{auth()->user()->name}}</h4>
+                            <h4 class="pt-2 ">Hi, {{ auth()->user()->name }}</h4>
                         </div><!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </div>

@@ -16,12 +16,13 @@ class CreateStoriesTable extends Migration
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
             $table->string('uuid_story');
+            $table->string('uuid_user');
             $table->string('kenal')->nullable();
             $table->string('dekat')->nullable();
             $table->string('pacaran')->nullable();
             $table->string('menikah')->nullable();
             $table->timestamps();
-            $table->foreign('uuid_story')->references('uuid')->on('users');
+            // $table->foreign('uuid_story')->references('uuid')->on('users');
     });
     }
 

@@ -10,6 +10,7 @@ class Info extends Model
     use HasFactory;
     protected $fillable =[
         'uuid_info',
+        'uuid_user',
         'akad',
         'resepsi',
         'tempat',
